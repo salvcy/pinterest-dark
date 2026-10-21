@@ -235,3 +235,8 @@ These all come from Pinterest's own dark mode, which the extension doesn't alter
 | `extension/` | Shared source: manifest, `background.js`, `main.js`, icons |
 | `tools/build.sh` | Builds `dist/chrome`, `dist/firefox` and the Safari app |
 | `tools/make-icons.swift` | Draws the icons |
+
+## License
+
+[MIT](LICENSE). Pinterest is a trademark of Pinterest, Inc. This project isn't affiliated with or
+endorsed by Pinterest.
