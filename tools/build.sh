@@ -77,7 +77,7 @@ build_safari() {
   has_xcode || { echo "safari: needs macOS with Xcode" >&2; return 1; }
   stage safari
 
-  local app="Pinterest Dark" bundle_id="com.ahmed.PinterestDark"
+  local app="Pinterest Dark" bundle_id="com.salvcy.PinterestDark"
   local project="xcode/$app/$app.xcodeproj"
   xcrun safari-web-extension-converter "$DIST/safari" \
     --project-location xcode --app-name "$app" --bundle-identifier "$bundle_id" \
@@ -85,7 +85,7 @@ build_safari() {
 
   # The converter derives the app target's identifier from the app name ("…Pinterest-Dark") while
   # the extension gets "$bundle_id.Extension"; Xcode requires the extension to be prefixed by the app.
-  sed -i '' "s/PRODUCT_BUNDLE_IDENTIFIER = \"com.ahmed.Pinterest-Dark\";/PRODUCT_BUNDLE_IDENTIFIER = $bundle_id;/" \
+  sed -i '' "s/PRODUCT_BUNDLE_IDENTIFIER = \"${bundle_id%.*}.Pinterest-Dark\";/PRODUCT_BUNDLE_IDENTIFIER = $bundle_id;/" \
     "$project/project.pbxproj"
 
   local identity="${SIGN_IDENTITY:-$(security find-identity -v -p codesigning \
